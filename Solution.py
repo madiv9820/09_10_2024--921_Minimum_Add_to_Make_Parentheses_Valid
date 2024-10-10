@@ -1,30 +1,24 @@
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
-        # Initialize a stack to keep track of open parentheses
-        stack = []
-        # This variable counts how many closing parentheses are needed
-        closing_Parameters_Count = 0
+        # Initialize counters for open and close parentheses
+        open_count = 0
+        close_count = 0
         
         # Iterate over each character in the input string
         for character in s:
-            # If the character is an open parenthesis, push it onto the stack
             if character == '(':
-                stack.append(character)
-            # If the character is a closing parenthesis
-            elif len(stack) > 0:
-                # Pop from the stack if there's a matching open parenthesis
-                stack.pop()
+                open_count += 1  # Increment for an open parenthesis
             else:
-                # If there's no matching open parenthesis, increment the counter
-                closing_Parameters_Count += 1
-
-        # Return the total number of parentheses needed:
-        # closing_Parameters_Count (for unmatched closing parentheses)
-        # plus the length of the stack (for unmatched opening parentheses)
-        return closing_Parameters_Count + len(stack)            
+                if open_count > 0:
+                    open_count -= 1  # Match with an open parenthesis
+                else:
+                    close_count += 1  # Increment for unmatched closing parenthesis
+        
+        # The total number of additions needed is the sum of unmatched open and close parentheses
+        return open_count + close_count
 
 # Time Complexity: O(n), where n is the length of the input string s.
 # Each character is processed once.
 
-# Space Complexity: O(n) in the worst case, where all characters are '('
-# and need to be stored in the stack.
+# Space Complexity: O(1), since we are using a fixed amount of space
+# for the open_count and close_count variables, regardless of the input size.
