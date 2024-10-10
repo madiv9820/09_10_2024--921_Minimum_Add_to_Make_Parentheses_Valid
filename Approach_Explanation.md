@@ -1,3 +1,5 @@
+# Minimum Additions to Make Parentheses Valid: Stack and Balance Counter Approaches
+
 - ## Approach 1: Using Stack
 
     - ### Intuition
@@ -32,7 +34,8 @@
         # Time Complexity: O(n), where n is the length of the input string s.
         # Space Complexity: O(n) in the worst case, where all characters are '('.
         ```
-
+<hr>
+    
 - ## Balance Counter Approach
 
     - ### Intuition
